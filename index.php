@@ -1,7 +1,6 @@
 <?php
-    // Inclure les fichiers de header et footer avec la méthode require_once pour assurer que le code est exécuté uniquement une fois
+    // Inclure les fichiers de header avec la méthode require_once pour assurer que le code est exécuté uniquement une fois
     require_once 'header.php';
-    require_once 'footer.php';
 
     // Inclure les fichiers de données avec la méthode require pour assurer que le code est exécuté à chaque requête
     require 'data.php';
