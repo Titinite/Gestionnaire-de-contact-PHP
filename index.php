@@ -1,25 +1,18 @@
 <?php
-    // Inclure les fichiers de header avec la méthode require_once pour assurer que le code est exécuté uniquement une fois
+    // Inclure les fichiers de header et footer avec la méthode require_once pour assurer que le code est exécuté uniquement une fois
     require_once 'header.php';
+    require_once 'footer.php';
 
     // Inclure les fichiers de données avec la méthode require pour assurer que le code est exécuté à chaque requête
     require 'data.php';
-
-    // Vérifier si la requête est une méthode POST. On appelle la fonction addContact() avec les données du formualaire.
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-
-        addContact($name, $email, $phone);
-    }
 
     // Obtenir tous les contacts de la base de données. (Toutes les fonctions sont définies dans le fichier data.php)
     $contacts = getContacts();
 ?>
 
 <body>
-    <form action="index.php" method="post">
+    <!-- Formulaire pour ajouter un contact -->
+    <form action="add_contact.php" method="post">
         <div>
             <fieldset>
                 <legend>Nom du contact</legend>
@@ -52,6 +45,22 @@
             <td><?php echo htmlspecialchars($contact['Name']); ?></td>
             <td><?php echo htmlspecialchars($contact['Email']); ?></td>
             <td><?php echo htmlspecialchars($contact['Phone']); ?></td>
+
+            <td class="buttons">
+                <form action="edit.php" method="GET">
+                    <input type="hidden" name="Id_people" value="<?php echo $contact['Id_people']; ?>">
+                    <input type="hidden" name="Name" value="<?php echo htmlspecialchars($contact['Name']); ?>">
+                    <input type="hidden" name="Email" value="<?php echo htmlspecialchars($contact['Email']); ?>">
+                    <input type="hidden" name="Phone" value="<?php echo htmlspecialchars($contact['Phone']); ?>">
+                    <button type="submit" class="button-table">Modifier</button>
+                </form>
+            </td>
+            <td class="buttons">
+                <form action="delete_contact.php" method="POST">
+                    <input type="hidden" name="Id_people" value="<?php echo $contact['Id_people']; ?>">
+                    <button type="submit" class="button-table">Supprimer</button>
+                </form>
+            </td>
         </tr>
         <?php endforeach; ?>
     </table>
