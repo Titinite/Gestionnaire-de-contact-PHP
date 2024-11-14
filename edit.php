@@ -9,7 +9,7 @@
 
 <body>
     <!-- Formulaire pour modifier le contact -->
-    <form action="edit_contact.php" method="POST">
+    <form action="edit_contact.php" method="POST" class="form-contact">
         <div>
             <!-- Champ caché pour l'ID du contact -->
             <input type="hidden" name="id" value="<?= htmlspecialchars($contact['Id_people']); ?>">
