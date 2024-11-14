@@ -12,7 +12,7 @@
 
 <body>
     <!-- Formulaire pour ajouter un contact -->
-    <form action="add_contact.php" method="post">
+    <form action="add_contact.php" method="post" class="form-contact">
         <div>
             <fieldset>
                 <legend>Nom du contact</legend>
@@ -47,7 +47,7 @@
             <td><?php echo htmlspecialchars($contact['Phone']); ?></td>
 
             <td class="buttons">
-                <form action="edit.php" method="GET">
+                <form action="edit.php" method="GET" class="form-button-table">
                     <input type="hidden" name="Id_people" value="<?php echo $contact['Id_people']; ?>">
                     <input type="hidden" name="Name" value="<?php echo htmlspecialchars($contact['Name']); ?>">
                     <input type="hidden" name="Email" value="<?php echo htmlspecialchars($contact['Email']); ?>">
@@ -56,7 +56,7 @@
                 </form>
             </td>
             <td class="buttons">
-                <form action="delete_contact.php" method="POST">
+                <form action="delete_contact.php" method="POST" class="form-button-table">
                     <input type="hidden" name="Id_people" value="<?php echo $contact['Id_people']; ?>">
                     <button type="submit" class="button-table">Supprimer</button>
                 </form>
